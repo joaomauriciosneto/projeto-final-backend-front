@@ -19,6 +19,9 @@ let inputDescription = document.getElementById('recipient-description');
 
 let modal = new bootstrap.Modal('#exampleModal');
 
+/**
+ * sair do sistema
+ */
 function logout() {
     localStorage.removeItem('user-notes');
     alert('Always come back!')
@@ -240,7 +243,7 @@ async function listarTodosOsRecados() {
 }
 
 /**
- * 
+ * controla o "tipo de edição"
  */
 async function updateNoteApi() {
 
