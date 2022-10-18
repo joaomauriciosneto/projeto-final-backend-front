@@ -11,6 +11,9 @@ const inputLoginPassword = document.getElementById('password')
 const btnLogin = document.getElementById('btn-login');
 const formLogin = document.getElementById('form_login');
 
+/**
+ * mostra/oculta o password
+ */
 function showHidePassword() {
     const inputPassword = document.getElementById('input_password_register')
 
@@ -21,6 +24,9 @@ function showHidePassword() {
     }
 }
 
+/**
+ * mostra/oculta o password
+ */
 function showHideConfPassword() {
     const inputConfPassword = document.getElementById('input_conf_password_register')
 
@@ -31,6 +37,9 @@ function showHideConfPassword() {
     }
 }
 
+/**
+ * mostra/oculta o password
+ */
 function showHidePasswordLogin() {
     const inputLoginPassword = document.getElementById('password')
 
@@ -41,6 +50,9 @@ function showHidePasswordLogin() {
     }
 }
 
+/**
+ * cria um novo usuário
+ */
 async function createUser(e) {
 
     e.preventDefault();    
@@ -75,6 +87,9 @@ async function createUser(e) {
 
 }
 
+/**
+ * faz o login do usuário
+ */
 async function login() {
 
     try {       

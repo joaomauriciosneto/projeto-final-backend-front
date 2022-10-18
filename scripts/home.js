@@ -1,4 +1,6 @@
-
+/**
+ * loading
+ */
 let i = setInterval(function () {
     clearInterval(i);
     document.getElementById("loading").style.display = "none";
@@ -25,6 +27,9 @@ function logout() {
 
 btnLogout.addEventListener('click', logout)
 
+/**
+ * lista todos os recados salvos
+ */
 async function listNotes(id, listSaved) {
     
     try {
@@ -82,7 +87,6 @@ async function listNotes(id, listSaved) {
             `
             const checkId = document.getElementById(`checkTeste_${item.id}`)
 
-
             if(item.saved) {
                 checkId.checked = true;
             }
@@ -96,6 +100,9 @@ async function listNotes(id, listSaved) {
 
 }
 
+/**
+ * marca o checkbox
+ */
 async function checkBoxNote(idNote) {
 
     try {
@@ -119,6 +126,9 @@ async function checkBoxNote(idNote) {
 
 }
 
+/**
+ * cria recados
+ */
 async function createNotes() {
 
     try {
@@ -170,7 +180,9 @@ async function createNotes() {
     }
 }
 
-
+/**
+ * lista todos os recados (inclusive os salvos)
+ */
 async function listarTodosOsRecados() {
 
     try {
@@ -227,10 +239,16 @@ async function listarTodosOsRecados() {
 
 }
 
+/**
+ * 
+ */
 async function updateNoteApi() {
 
     try {
 
+        /**
+         * variável do usuário
+         */
         const user = JSON.parse(localStorage.getItem('user-notes'));
         const idUser = user.id
 
@@ -258,6 +276,9 @@ async function updateNoteApi() {
             description: formRegisterNote.input_note_description.value
         }
 
+        /**
+         * recupera o id do recado no localstorage
+         */
         const recadoId = localStorage.getItem('recadoId')
 
         if(!recadoId) {
@@ -279,7 +300,9 @@ async function updateNoteApi() {
     }
 
 }
-
+ /**
+  * altera o recado
+  */
 async function updateNote(editNote) {
 
         try {
@@ -307,12 +330,19 @@ async function updateNote(editNote) {
 
 }
 
+/**
+ * apenas muda o valor setado no localstorage para 'N',
+ * par controlar o botão editar/salvar 
+ */
 function criarUpdate() {
 
     localStorage.setItem('edicao', 'N');
 
 }
 
+/**
+ * pega o recado selecionado no botão editar
+ */
 async function editNotes(idNote) {
 
     try {
@@ -333,6 +363,9 @@ async function editNotes(idNote) {
 
 }
 
+/**
+ * deleta o recado selecionado
+ */
 async function deleteNote(idDeleteNotes) {
 
     try {
