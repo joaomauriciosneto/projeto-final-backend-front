@@ -104,7 +104,7 @@ async function listNotes(id, listSaved) {
 }
 
 /**
- * marca o checkbox
+ * marca o checkbox --> false para true
  */
 async function checkBoxNote(idNote) {
 
@@ -376,8 +376,6 @@ async function deleteNote(idDeleteNotes) {
         const user = JSON.parse(localStorage.getItem('user-notes'));
         const idUser = user.id;
 
-        const resultNotes = await api.get(`/notes/${idUser}`);
-
         let confirmDelete = confirm(`Are you sure you want to delete the post?`);
 
         if(confirmDelete) {
@@ -391,6 +389,31 @@ async function deleteNote(idDeleteNotes) {
         console.log('deletar')
     }
 
+}
+
+/**
+ * exclui conta do usuário
+ */
+async function deleteAccount() {
+
+    try {
+
+        const user = JSON.parse(localStorage.getItem('user-notes'));
+        const idUser = user.id;
+        console.log(idUser)
+
+        let confirmDeleteAccount = confirm(`Are you sure you want to delete your account?`);    
+        
+        if(confirmDeleteAccount) {
+            let deleteAcc = await api.delete(`/notes/users/${idUser}`)
+            localStorage.removeItem('user-notes');
+            alert('Account successfully deleted!!')
+            location.href = 'login.html'
+        }
+
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 btnRegisterNote.addEventListener('click', createNotes)
