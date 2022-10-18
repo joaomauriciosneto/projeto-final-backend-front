@@ -80,9 +80,8 @@ async function createUser(e) {
         location.href = 'login.html'
         
     } catch (error) {
-        
+        alert(error.response.data.message)
         console.log(error)
-
     }
 
 }
@@ -115,6 +114,7 @@ async function login() {
         location.href = 'home.html'
         
     } catch (error) {
+        alert(error.response.data.message)
         console.log(error)
     }
 
