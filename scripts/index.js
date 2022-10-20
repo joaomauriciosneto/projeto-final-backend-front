@@ -77,6 +77,7 @@ async function createUser(e) {
         const result = await api.post('/notes/users', user)      
 
         alert('User registered successfully!')
+        
         location.href = 'login.html'
         
     } catch (error) {

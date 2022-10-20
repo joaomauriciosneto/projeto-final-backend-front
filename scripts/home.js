@@ -19,6 +19,10 @@ let inputDescription = document.getElementById('recipient-description');
 
 let modal = new bootstrap.Modal('#exampleModal');
 
+function clearForm() {
+    formRegisterNote.reset()
+}
+
 /**
  * sair do sistema
  */
@@ -171,12 +175,13 @@ async function createNotes() {
 
         const result = await api.post(`/notes/${idUser}`, notes)
 
-        inputTitle.value = '';
-        inputDescription.value = '';
+        // inputTitle.value = '';
+        // inputDescription.value = '';
 
-        alert('Note registered successfully!')   
+        alert('Note registered successfully!');
         modal.hide();
-        listNotes()
+        clearForm();
+        listNotes();
 
     } catch (error) {
         console.log(error)
