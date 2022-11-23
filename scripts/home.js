@@ -23,6 +23,10 @@ function clearForm() {
     formRegisterNote.reset()
 }
 
+function reloadPage() {
+    location.reload();
+}
+
 /**
  * sair do sistema
  */
@@ -50,7 +54,12 @@ async function listNotes(id, listSaved) {
 
         const result = await api.get(`/notes/${id}`)
 
-        let array = result.data.notes
+        let array = result.data.data
+        console.log(array);
+
+        if(array == null || array.length == 0) {
+            alert('No notes for listing!')
+        }
 
         let cont = 1
 
@@ -60,7 +69,7 @@ async function listNotes(id, listSaved) {
 
         for(let item of array) {
 
-            if(item.saved != listSaved) {
+            if(item.saveNote != listSaved) {
                 continue;
             }
             
@@ -175,9 +184,6 @@ async function createNotes() {
 
         const result = await api.post(`/notes/${idUser}`, notes)
 
-        // inputTitle.value = '';
-        // inputDescription.value = '';
-
         alert('Note registered successfully!');
         modal.hide();
         clearForm();
@@ -204,7 +210,11 @@ async function listarTodosOsRecados() {
 
         const result = await api.get(`/notes/${id}`)
 
-        let array = result.data.notes
+        let array = result.data.data
+
+        if(array == null || array.length == 0) {
+            alert('No notes for listing!')
+        }
 
         let cont = 1
 
@@ -288,7 +298,8 @@ async function updateNoteApi() {
          * recupera o id do recado no localstorage
          */
         const recadoId = localStorage.getItem('recadoId')
-
+        console.log(recadoId)
+        
         if(!recadoId) {
             alert('Note not found!')
             return;
@@ -309,7 +320,7 @@ async function updateNoteApi() {
 
 }
  /**
-  * altera o recado
+  * pega o recado selecionado no botão editar
   */
 async function updateNote(editNote) {
 
@@ -321,16 +332,20 @@ async function updateNote(editNote) {
             const idUser = user.id    
             const resultNotes = await api.get(`/notes/${idUser}`)
 
-            for(let item of resultNotes.data.notes) {
-                
-                if(item.id === editNote) {
-                    
+            console.log('antes do for')
+            for(let item of resultNotes.data.data) {
+   
+                if(item.id == editNote) {
+                    console.log('dentro do if')
+                                        
                     localStorage.setItem('recadoId', editNote)
 
                     formRegisterNote.input_note_title.value = item.title
                     formRegisterNote.input_note_description.value = item.description
                 }
             }
+
+            console.log('depois do for')
             
         } catch (error) {
             console.log(error)
@@ -349,7 +364,7 @@ function criarUpdate() {
 }
 
 /**
- * pega o recado selecionado no botão editar
+ * altera o recado
  */
 async function editNotes(idNote) {
 
@@ -364,6 +379,8 @@ async function editNotes(idNote) {
         }
 
         const result = await api.put(`/notes/${idUser}/${idNote}`, upNote);
+
+        listarTodosOsRecados();
         
     } catch (error) {
         console.log(error)

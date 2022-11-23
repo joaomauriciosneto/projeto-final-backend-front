@@ -109,6 +109,7 @@ async function login() {
         }
 
         const result = await api.post('/notes/login', user)
+        console.log(result)
 
         localStorage.setItem('user-notes', JSON.stringify(result.data.data))
 
