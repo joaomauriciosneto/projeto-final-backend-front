@@ -1,5 +1,5 @@
 const api = axios.create({
-    baseURL: 'http://localhost:3333'
+    baseURL: 'http://localhost:5555'
 })
 
 const formCreateUser = document.getElementById('form_register');
@@ -74,7 +74,7 @@ async function createUser(e) {
             password: formCreateUser.input_password_register.value
         }
 
-        const result = await api.post('/notes/users', user)      
+        const result = await api.post('/users', user)      
 
         alert('User registered successfully!')
         
@@ -108,8 +108,8 @@ async function login() {
             alert('Fill in the PASSWORD field!')
         }
 
-        const result = await api.post('/notes/login', user)
-        console.log(result)
+        const result = await api.post('/users/login', user)
+        console.log(result)        
 
         localStorage.setItem('user-notes', JSON.stringify(result.data.data))
 

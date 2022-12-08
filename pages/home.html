@@ -20,67 +20,78 @@
 
   <main id="content" style="display: none">
 
-    <h1>My Notes - System vs 3.0</h1>
-    <div class="user-login">
-        <p>User <span class="fw-bold text-primary" id="logged"></span> is logged!</p>
-    </div>
-    <div>
-        <button type="button" class="btn btn-warning mb-3" id="btn-logout">Logout</button>
-        <button type="button"
-        class="btn btn-outline-primary mb-3"
-        id="btn-new-note"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-        data-bs-whatever="@mdo"
-        onclick="criarUpdate()">New Note
-        </button>
-        <button type="button" class="btn btn-outline-secondary mb-3" id="btn-logout"
-        onclick="listNotes(null, true)">List Save Notes</button>
-        <button type="button" class="btn btn-outline-info mb-3" id="btn-logout"
-        onclick="listarTodosOsRecados()">List all Notes</button>
-        <button type="button" class="btn btn-danger mb-3" id="btn-logout"
-        onclick="deleteAccount()">Delete Account</button>
-    </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">New Note</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="form-register-note">
-              <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Title:</label>
-                <input type="text" class="form-control" id="recipient-title" name="input_note_title">
-              </div>
-              <div class="mb-3">
-                <label for="message-text" class="col-form-label">Description:</label>
-                <input type="text" class="form-control" id="recipient-description" name="input_note_description">
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="btn-save-note">Save Note</button>
+    <div class="card">
+
+      <div class="card-header">
+        <h1>My Notes - System vs 3.0</h1>
+      </div>
+      
+      <div class="card-body">
+
+        <div class="user-login">
+          <p>User <span class="fw-bold text-primary" id="logged"></span> is logged!</p>
+      </div>
+      <div>
+          <button type="button" class="btn btn-warning mb-3" id="btn-logout">Logout</button>
+          <button type="button"
+          class="btn btn-outline-primary mb-3"
+          id="btn-new-note"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          data-bs-whatever="@mdo"
+          onclick="criarUpdate()">New Note
+          </button>
+          <button type="button" class="btn btn-outline-secondary mb-3" id="btn-logout"
+          onclick="listNotes(null, true)">List Save Notes</button>
+          <button type="button" class="btn btn-outline-info mb-3" id="btn-logout"
+          onclick="listarTodosOsRecados()">List all Notes</button>
+          <button type="button" class="btn btn-danger mb-3" id="btn-logout"
+          onclick="deleteAccount()">Delete Account</button>
+      </div>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">New Note</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="form-register-note">
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Title:</label>
+                  <input type="text" class="form-control" id="recipient-title" name="input_note_title">
+                </div>
+                <div class="mb-3">
+                  <label for="message-text" class="col-form-label">Description:</label>
+                  <input type="text" class="form-control" id="recipient-description" name="input_note_description">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="btn-save-note">Save Note</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <table class="table table-striped table-hover records" id="tabela">
-        <thead class="bg-dark text-white">
-            <tr>
-                <th scope="col" width="70">#</th>
-                <th scope="col">Title</th>
-                <th scope="col">Description</th>
-                <th scope="col" width="350" class="text-align-center">Actions</th>
-                <th scope="col" width="250">Save Notes</th>
-            </tr>
-        </thead>
-        <tbody id="table-notes">
+      <table class="table table-striped table-hover records" id="tabela">
+          <thead class="bg-dark text-white">
+              <tr>
+                  <th scope="col" width="70">#</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Description</th>
+                  <th scope="col" width="350" class="text-align-center">Actions</th>
+                  <th scope="col" width="250">Save Notes</th>
+              </tr>
+          </thead>
+          <tbody id="table-notes">
 
-        </tbody>
-    </table>
+          </tbody>
+      </table>
+
+      </div>
+
+    </div>
 
   </main>    
 
